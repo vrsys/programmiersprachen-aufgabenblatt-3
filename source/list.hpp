@@ -19,7 +19,7 @@ struct ListNode {
 
 
 //TODO: Implementierung der Methoden des Iterators 
-//      (nach Vorlesung STL-1 am 09. Juni) (Aufgabe 3.11)
+//      (nach Vorlesung STL-1 am 09. Juni) (Aufgabe 3.12)
 template <typename T>
 struct ListIterator {
   using Self              = ListIterator<T>;
@@ -37,7 +37,7 @@ struct ListIterator {
     }
 
     //TODO: remaining implementation of derefenciation of 
-    //      iterator using operator* (Aufgabe 3.11 - Teil 1)
+    //      iterator using operator* (Aufgabe 3.12 - Teil 1)
 
   } //call *it
 
@@ -48,7 +48,7 @@ struct ListIterator {
     }
 
     //TODO: remaining implementation of derefenciation of 
-    //      iterator using operator-> (Aufgabe 3.11 - Teil 2)
+    //      iterator using operator-> (Aufgabe 3.12 - Teil 2)
   }  //call it->method() or it->member
 
 
@@ -59,7 +59,7 @@ struct ListIterator {
     }
 
     //TODO: Implement Postincrement-Operation for Iterator
-    //      (Aufgabe 3.11 - Teil 3)
+    //      (Aufgabe 3.12 - Teil 3)
     
   }
 
@@ -71,7 +71,7 @@ struct ListIterator {
     }
 
     //TODO: Implement Postincrement-Operation for Iterator
-    //      (Aufgabe 3.11 - Teil 4)
+    //      (Aufgabe 3.12 - Teil 4)
 
   }
 
@@ -79,7 +79,7 @@ struct ListIterator {
   /* ... */
   bool operator==(ListIterator<T> const& x) const {
     //TODO: Implement Equality-Operation for Iterator
-    //      (Aufgabe 3.11 - Teil 5)
+    //      (Aufgabe 3.12 - Teil 5)
     // Iterators should be the same if they refer to the same node
     return false;
   } // call it: == it
@@ -87,7 +87,7 @@ struct ListIterator {
   /* ... */
   bool operator!=(ListIterator<T> const& x) const {
     //TODO: Implement Inequality-Operation for Iterator  
-    //      (Aufgabe 3.11 - Teil 6)
+    //      (Aufgabe 3.12 - Teil 6)
     // Reuse operator==
     return false;
   } // call it: != it
@@ -134,9 +134,10 @@ class List {
     // test and implement:
     //TODO: Copy-Konstruktor using Deep-Copy semantics (Aufgabe 3.5)
 
+    // test and implement:
+    // TODO: Move-Konstruktor (Aufgabe 3.9)
 
-
-    //TODO: Initializer-List Konstruktor (3.14 - Teil 1)
+    //TODO: Initializer-List Konstruktor (3.10 - Teil 1)
     /* ... */
     // test and implement:
     List(std::initializer_list<T> ini_list) {
@@ -172,14 +173,14 @@ class List {
     /* ... */
     ListIterator<T> begin() {
       //TODO: begin-Method returning an Iterator to the 
-      //      first element in the List (Aufgabe 3.10)
+      //      first element in the List (Aufgabe 3.11)
       return {};
     }
 
     /* ... */
     ListIterator<T> end() {
       //TODO: end-Method returning an Iterator to element after (!) 
-      //      the last element in the List (Aufgabe 3.10)
+      //      the last element in the List (Aufgabe 3.11)
       return {};
     }
 
@@ -189,10 +190,10 @@ class List {
 
 
     /* ... */
-    //TODO: member function insert (Aufgabe 3.12)
+    //TODO: member function insert (Aufgabe 3.13)
 
     /* ... */
-    //TODO: member function insert (Aufgabe 3.13)
+    //TODO: member function insert (Aufgabe 3.14)
 
     /* ... */
 
@@ -272,6 +273,7 @@ class List {
 //(Aufgabe 3.7 - Teil 2, benutzt Member-Funktion reverse)
 
 /* ... */
-//TODO: Freie Funktion operator+ (3.14 - Teil 2)
+//TODO: Freie Funktion operator+ (3.10 - Teil 2)
+
 
 #endif // # define BUW_LIST_HPP
