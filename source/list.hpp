@@ -144,9 +144,6 @@ class List {
       //not implemented yet
     }
 
-    // test and implement:
-    //TODO: Copy-Konstruktor using Deep-Copy semantics (Aufgabe 3.5)
-
     /* ... */
     // test and implement:
     //TODO: (unifying) Assignment operator (Aufgabe 3.6)
@@ -154,12 +151,12 @@ class List {
     /* ... */
     // test and implement:
 
-    bool operator==(List const& rhs)
+    bool operator==(List const& rhs) const
     {
       //TODO: operator== (Aufgabe 3.8)
     }
 
-    bool operator!=(List const& rhs)
+    bool operator!=(List const& rhs) const
     {
       //TODO: operator!= (Aufgabe 3.8)
       // make use of operator==
