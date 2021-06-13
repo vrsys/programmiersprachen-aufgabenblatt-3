@@ -43,6 +43,9 @@ ListNode<T>* get_last_pointer(List<T> const& list_to_test) {return list_to_test.
 #include "sub_tests/iterators/operator_does_not_equal.test"
 #include "sub_tests/iterators/operator_iterate_forward.test"
 
+
+#include <map>
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
