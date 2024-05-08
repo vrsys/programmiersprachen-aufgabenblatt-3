@@ -14,82 +14,107 @@ struct ListIterator {
     using difference_type = ptrdiff_t;
     using iterator_category = std::bidirectional_iterator_tag;
 
+    /* DESCRIPTION  operator*() */ //Aufgabe 3.10 - Teil 1
+    T& operator*()  const;
 
-    /* DESCRIPTION  operator*() */
-    T& operator*()  const {
-        if (nullptr == node) {
-            throw "Iterator does not point to valid node";
-        }
+    /* DESCRIPTION  operator->() */ //Aufgabe 3.10 - Teil 2
+    T* operator->() const;
 
-        //TODO: remaining implementation of derefenciation of 
-        //      iterator using operator* (Aufgabe 3.10 - Teil 1)
-
-    } //call *it
-
-    /* DESCRIPTION  operator->() */
-    T* operator->() const {
-        if (nullptr == node) {
-            throw "Iterator does not point to valid node";
-        }
-
-        //TODO: remaining implementation of derefenciation of 
-        //      iterator using operator-> (Aufgabe 3.10 - Teil 2)
-    }  //call it->method() or it->member
-
-
-    /* PREINCREMENT, call: ++it, advances one element forward */
-    ListIterator<T>& operator++() {
-        if (nullptr == node) {
-            throw "Iterator does not point to valid node";
-        }
-
-        //TODO: Implement Postincrement-Operation for Iterator
-        //      (Aufgabe 3.10 - Teil 3)
-
-    }
+    /* PREINCREMENT, call: ++it, advances one element forward */ //Aufgabe 3.10 - Teil 3
+    ListIterator<T>& operator++();
 
     /* POSTINCREMENT (signature distinguishes the iterators),
-                      call:  it++, advances one element forward*/
-    ListIterator<T> operator++(int) {
-        if (nullptr == node) {
-            throw "Iterator does not point to valid node";
-        }
+                      call:  it++, advances one element forward*/ // Aufgabe 3.10 - Teil 4
+    ListIterator<T> operator++(int);
 
-        //TODO: Implement Postincrement-Operation for Iterator
-        //      (Aufgabe 3.10 - Teil 4)
+    /* ... */ // Aufgabe 3.10 - Teil 5
+    bool operator==(ListIterator<T> const& x) const;
 
-    }
-
-
-    /* ... */
-    bool operator==(ListIterator<T> const& x) const {
-        //TODO: Implement Equality-Operation for Iterator
-        //      (Aufgabe 3.10 - Teil 5)
-        // Iterators should be the same if they refer to the same node
-        return false;
-    } // call it: == it
-
-    /* ... */
-    bool operator!=(ListIterator<T> const& x) const {
-        //TODO: Implement Inequality-Operation for Iterator  
-        //      (Aufgabe 3.10 - Teil 6)
-        // Reuse operator==
-        return false;
-    } // call it: != it
+    /* ... */ // Aufgabe 3.10 - Teil 6
+    bool operator!=(ListIterator<T> const& x) const;
 
     /* Advances Iterator */
-    ListIterator<T> next() const {
-        if (nullptr != node) {
-            return ListIterator{ node->next };
-        }
-        else {
-            return ListIterator{ nullptr };
-        }
-    }
-
+    ListIterator<T> next() const;
 
     ListNode <T>* node = nullptr;
 };
 
+
+// START OF IMPLEMENTATION SECTION FOR MEMBER FUNCTIONS
+//=========================
+//(Aufgabe 3.10 - Teil 1)
+template <typename T>
+T& ListIterator<T>::operator*() const {
+    if (nullptr == node) {
+        throw "Iterator does not point to valid node";
+    }
+
+    //TODO: remaining implementation of derefenciation of 
+    //      iterator using operator*
+
+} //call: *it
+
+//=========================
+//(Aufgabe 3.10 - Teil 2)
+template <typename T>
+T* ListIterator<T>::operator->() const {
+    if (nullptr == node) {
+        throw "Iterator does not point to valid node";
+    }
+
+    //TODO: remaining implementation of derefenciation of 
+    //      iterator using operator->
+}  //call it->method() or it->member
+
+//=========================
+// (Aufgabe 3.10 - Teil 3)
+template <typename T>
+ListIterator<T>& ListIterator<T>::operator++() {
+    if (nullptr == node) {
+        throw "Iterator does not point to valid node";
+    }
+
+    //TODO: Implement Postincrement-Operation for Iterator
+}
+
+//=========================
+//  (Aufgabe 3.10 - Teil 4)
+template <typename T>
+ListIterator<T> ListIterator<T>::operator++(int) {
+    if (nullptr == node) {
+        throw "Iterator does not point to valid node";
+    }
+
+    //TODO: Implement Postincrement-Operation for Iterator
+}
+
+//=========================
+//  (Aufgabe 3.10 - Teil 5)
+template <typename T>
+bool ListIterator<T>::operator==(ListIterator<T> const& x) const {
+    //TODO: Implement Equality-Operation for Iterator
+    // Iterators should be the same if they refer to the same node
+    return false;
+} // call it: == it
+
+//=========================
+//  (Aufgabe 3.10 - Teil 6)
+template <typename T>
+bool ListIterator<T>::operator!=(ListIterator<T> const& x) const {
+    //TODO: Implement Inequality-Operation for Iterator  
+    // Reuse operator==
+    return false;
+} // call it: != it
+
+//=========================
+template <typename T>
+ListIterator<T> ListIterator<T>::next() const {
+    if (nullptr != node) {
+        return ListIterator{ node->next };
+    }
+    else {
+        return ListIterator{ nullptr };
+    }
+}
 
 #endif // #ifndef BUW_LIST_ITERATOR_HPP
