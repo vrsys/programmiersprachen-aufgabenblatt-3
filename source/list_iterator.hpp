@@ -36,6 +36,7 @@ struct ListIterator {
     /* Advances Iterator */
     ListIterator<T> next() const;
 
+    //only member variable, pointer to the underlying node (see list_node.hpp)
     ListNode <T>* node = nullptr;
 };
 
