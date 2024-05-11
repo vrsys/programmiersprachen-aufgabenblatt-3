@@ -11,9 +11,16 @@
 
 #include <initializer_list>
 
+// forward declaration of template list class
 template <typename T>
 class List;
 
+// forward declaration of free function "reverse"
+template <typename T>
+List<T> reverse(List<T> const& list_to_reverse);
+
+template <typename T>
+List<T> operator+(List<T> const& lhs, List<T> const& rhs);
 
 template <typename T>
 class List {
@@ -69,46 +76,39 @@ class List {
     /* Declaration of empty-Method */
     bool empty() const;
 
-    /* Declaration of push_front-Method (Aufgabe 3.3 - Teil 1) */
+    /* Declaration of push_front-Method */
     void push_front(T const& element);
 
-    /* Declaration of pop_front-Method (Aufgabe 3.3 - Teil 2) */
+    /* Declaration of pop_front-Method */
     void pop_front();
 
-    /* Declaration of push_front-Method (Aufgabe 3.3 - Teil 3) */
+    /* Declaration of push_front-Method */
     void push_back(T const& element);
 
-    /* Declaration of push_front-Method (Aufgabe 3.3 - Teil 4) */
+    /* Declaration of push_front-Method */
     void pop_back();
 
-    /* Declaration of front-Method (Aufgabe 3.3 - Teil 5) */
+    /* Declaration of front-Method */
     T& front();
 
-    /* Declaration of back-Method (Aufgabe 3.3 - Teil 6)*/
+    /* Declaration of back-Method */
     T& back();
 
-    /* Declaration of clear - Method */
+    /* Declaration of clear-Method */
     void clear();
 
-    /* ... */
-    // test and implement:
-    //TODO: clear()-Method (Aufgabe 3.4)
-
+    /* Declaration of reverse-Method*/
+    void reverse();
 
     /* Declaration of begin-Method returning a ListIterator refering to the first list_node */
     ListIterator<T> begin();
     /* Declaration of end-Method returning a ListIterator refering to the past-the-end-element which marks the end of the list*/
     ListIterator<T> end();
 
-    /* ... */
-    //TODO: member function insert (Aufgabe 3.11)
-
-    /* ... */
-    //TODO: member function erase (Aufgabe 3.12)
-
-    /* ... */
-
-    //TODO: member function reverse (Aufgabe 3.7 - Teil 1)
+    /* Declaration of insert-Method */
+    ListIterator<T> insert(ListIterator<T> const& position, T const& value);
+    /* Declaration of erase-Method */
+    ListIterator<T> erase(ListIterator<T> const& position);
 
   // list members
   private: 
@@ -117,14 +117,20 @@ class List {
     ListNode<T>* last_;
 };
 
+/* ======================================== *
+ * BEGIN COMMENTING AND IMPLEMENTATION HERE *
+ * ======================================== */
+
+ //=========================
 // not fully implemented yet
-// TODO: Implement Default-Constructor by adding a sensible initializer list. (Aufgabe 3.2 - Teil 1)
+/* Aufgabe 3.2 - Teil 1 */
 /* ... */
 template <typename T>
 List<T>::List() {}
 
+//=========================
 // test and implement
-// TODO: size-Method. (Aufgabe 3.2 - Teil 2)
+/* Aufgabe 3.2 - Teil 2 */
 /* ... */
 template <typename T>
 std::size_t List<T>::size() const {
@@ -132,8 +138,9 @@ std::size_t List<T>::size() const {
     return 27;
 };
 
+//=========================
 // test and implement
-// TODO: empty-Method. (Aufgabe 3.2 - Teil 3)
+/* Aufgabe 3.2 - Teil 3 */
 /* ... */
 template <typename T>
 bool List<T>::empty() const {
@@ -141,15 +148,17 @@ bool List<T>::empty() const {
     return false;
 };
 
-
-
-/* Declaration of push_front-Method (Aufgabe 3.3 - Teil 1) */
+//=========================
+/* Aufgabe 3.3 - Teil 1 */
+/* ... */
 template <typename T>
 void List<T>::push_front(T const& element) {
     // TODO: push_front-method (Aufgabe 3.3)
 }
 
-/* Declaration of pop_front-Method (Aufgabe 3.3 - Teil 2) */
+//=========================
+/* Aufgabe 3.3 - Teil 2 */
+/* ... */
 template <typename T>
 void List<T>::pop_front() {
     if (empty()) {
@@ -159,13 +168,17 @@ void List<T>::pop_front() {
     // TODO: remainder of pop_front-method (Aufgabe 3.3)
 }
 
-/* Declaration of push_front-Method (Aufgabe 3.3 - Teil 3) */
+//=========================
+/* Aufgabe 3.3 - Teil 3 */
+/* ... */
 template <typename T>
 void List<T>::push_back(T const& element) {
     // TODO: push_back-method (Aufgabe 3.3)
 }
 
-/* Declaration of push_front-Method (Aufgabe 3.3 - Teil 4) */
+//=========================
+/* Aufgabe 3.3 - Teil 4 */
+/* ... */
 template <typename T>
 void List<T>::pop_back() {
     if (empty()) {
@@ -175,7 +188,9 @@ void List<T>::pop_back() {
     // TODO: remainder of pop_back-method (Aufgabe 3.3)
 }
 
-/* Declaration of front-Method (Aufgabe 3.3 - Teil 5) */
+//=========================
+/* Aufgabe 3.3 - Teil 5 */
+/* ... */
 template <typename T>
 T& List<T>::front() {
     if (empty()) {
@@ -185,7 +200,9 @@ T& List<T>::front() {
     // TODO: remainder of front-method (Aufgabe 3.3)
 }
 
-/* Declaration of back-Method (Aufgabe 3.3 - Teil 6)*/
+//=========================
+/* Aufgabe 3.3 - Teil 6 */
+/* ... */
 template <typename T>
 T& List<T>::back() {
     if (empty()) {
@@ -195,69 +212,89 @@ T& List<T>::back() {
     // TODO: remainder of back-method (Aufgabe 3.3)
 }
 
-
-
+//=========================
 // test and implement:
-//TODO: Copy-Konstruktor using Deep-Copy semantics (Aufgabe 3.5)
+// TODO: clear 
+// Aufgabe 3.4 - Teil 1
+/* ... */
+template <typename T>
+void List<T>::clear() {
+
+}
+
+//=========================
+// test and implement:
+// TODO: List Destructor implemented by calling clear
+// Aufgabe 3.4 - Teil 2
+/* ... */
+template <typename T>
+List<T>::~List() {
+    //TODO: Implement via clear-Method (Aufgabe 3.4)
+} //can not be tested with unit tests
+
+//=========================
+// test and implement:
+//TODO: Copy-Konstruktor using Deep-Copy semantics 
+// Aufgabe 3.5
 /* ... */
 template <typename T>
 List<T>::List(List<T> const& rhs) {}
 
-// test and implement:
-// TODO: Move-Konstruktor (Aufgabe 3.14)
-/* ... */
-template <typename T>
-List<T>::List(List<T>&& rhs) {}
-
-// test and implement:
-//TODO: Initializer - List Konstruktor(3.15 - Teil 1)
-/* ...  */
-template <typename T>
-List<T>::List(std::initializer_list<T> ini_list) {
-    //not implemented yet
-}
-
-// test and implement:
-// TODO: Destructor - List Konstruktor(3.4)
-/* ... */
-template <typename T>
-List<T>::~List() {
-  //TODO: Implement via clear-Method (Aufgabe 3.4)
-} //can not be tested with unit tests
-
-// test and implement:
-// TODO: unyfing assignment operator (see Vorlesung 6, pp. 11-13)
-/* ... */
-template <typename T>
-List<T>& List<T>::operator=(List<T> rhs) {
-
-}
-
+//=========================
 // test and implement:
 // TODO: helper-swap-method for bultin-types used by unifying assignment operator (see Vorlesung 6, pp. 11-13)
+// Aufgabe 3.6 - Teil 1
 /* ... */
 template <typename T>
 void List<T>::swap(List<T>& rhs) {
 
 }
 
+//=========================
+// test and implement:
+// TODO: unyfing assignment operator (see Vorlesung 6, pp. 11-13)
+// Aufgabe 3.6 - Teil 2
+/* ... */
+template <typename T>
+List<T>& List<T>::operator=(List<T> rhs) {
 
+}
+
+//=========================
+// Aufgabe 3.7 - Teil 1
+/* ... */
+template <typename T>
+void List<T>::reverse() {
+
+}
+
+//=========================
+// Aufgabe 3.7 - Teil 2
+/* ... */
+template <typename T>
+List<T> reverse(List<T> const& list_to_reverse) {
+
+}
+
+//=========================
+// Aufgabe 3.8 - Teil 1
+/* ... */
 template <typename T>
 bool List<T>::operator==(List const& rhs) const {
     //TODO: operator== (Aufgabe 3.8)
 }
 
+//=========================
+// Aufgabe 3.8 - Teil 2
+/* ... */
 template <typename T>
 bool List<T>::operator!=(List const& rhs) const {
     //TODO: operator!= (Aufgabe 3.8)
     // make use of operator== you implemented
 }
 
-template <typename T>
-void List<T>::clear() {
-
-}
-
+//=========================
+// Aufgabe 3.9 - Teil 1
 /* ... */
 template <typename T>
 ListIterator<T> List<T>::begin() {
@@ -266,6 +303,8 @@ ListIterator<T> List<T>::begin() {
     return {};
 }
 
+//=========================
+// Aufgabe 3.9 - Teil 2
 /* ... */
 template <typename T>
 ListIterator<T> List<T>::end() {
@@ -274,12 +313,48 @@ ListIterator<T> List<T>::end() {
     return {};
 }
 
+//=========================
+// Aufgabe 3.11
 /* ... */
-//TODO: Freie Funktion reverse 
-//(Aufgabe 3.7 - Teil 2, benutzt Member-Funktion reverse)
+template <typename T>
+ListIterator<T> List<T>::insert(ListIterator<T> const& position, T const& value) {
 
+}
+
+//=========================
+// Aufgabe 3.12
 /* ... */
-//TODO: Freie Funktion operator+ (3.15 - Teil 2)
+template <typename T>
+ListIterator<T> List<T>::erase(ListIterator<T> const& position) {
+
+}
+
+//=========================
+// Aufgabe 3.13 is a copy test and should be implemented in a cpp file
+
+//=========================
+// test and implement:
+// TODO: Move-Konstruktor (Aufgabe 3.14)
+/* ... */
+template <typename T>
+List<T>::List(List<T>&& rhs) {}
+
+//=========================
+// test and implement:
+//TODO: Initializer - List Konstruktor (3.15 - Teil 1)
+/* ...  */
+template <typename T>
+List<T>::List(std::initializer_list<T> ini_list) {
+    //not implemented yet
+}
+
+//=========================
+// Aufgabe 3.15 - Teil 2
+/* ... */
+template <typename T>
+List<T> operator+(List<T> const& lhs, List<T> const& rhs) {
+
+}
 
 
 #endif // #ifndef BUW_LIST_HPP
