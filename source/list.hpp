@@ -48,48 +48,57 @@ class List {
     /* Declaration of Initializer-List-based Constructor */
     List(std::initializer_list<T> ini_list);
 
+    /* Declaration of Destructor */
+    ~List();
+
+    /* Declaration of Unifying Assignment Operator - see: Vorlesung 6, pp. 11-13, watch video explanation!*/
+    List& operator=(List rhs);
+
+    /* Declaration of built-in Member-Swap method used by Unifying Assignment Operator */
+    void swap(List& rhs);
+
+    /* Declaration of list-comparison-operator in terms of equality */
+    bool operator==(List const& rhs) const;
+
+    /* Declaration of list-comparison-operator in terms of inequality */
+    bool operator!=(List const& rhs) const;
+    
+    /* Declaration of size-Method */
+    std::size_t size() const;
+
+    /* Declaration of empty-Method */
+    bool empty() const;
+
+    /* Declaration of push_front-Method (Aufgabe 3.3 - Teil 1) */
+    void push_front(T const& element);
+
+    /* Declaration of pop_front-Method (Aufgabe 3.3 - Teil 2) */
+    void pop_front();
+
+    /* Declaration of push_front-Method (Aufgabe 3.3 - Teil 3) */
+    void push_back(T const& element);
+
+    /* Declaration of push_front-Method (Aufgabe 3.3 - Teil 4) */
+    void pop_back();
+
+    /* Declaration of front-Method (Aufgabe 3.3 - Teil 5) */
+    T& front();
+
+    /* Declaration of back-Method (Aufgabe 3.3 - Teil 6)*/
+    T& back();
+
+    /* Declaration of clear - Method */
+    void clear();
 
     /* ... */
-    // test and implement:
-    //TODO: (unifying) Assignment operator (Aufgabe 3.6)
-
-    /* ... */
-    // test and implement:
-
-    bool operator==(List const& rhs) const
-    {
-      //TODO: operator== (Aufgabe 3.8)
-    }
-
-    bool operator!=(List const& rhs) const
-    {
-      //TODO: operator!= (Aufgabe 3.8)
-      // make use of operator==
-    }
-
-    /* ... */
-    ~List() {
-      //TODO: Implement via clear-Method (Aufgabe 3.4)
-    } //can not really be tested
-
-    /* ... */
-    ListIterator<T> begin() {
-      //TODO: begin-Method returning an Iterator to the 
-      //      first element in the List (Aufgabe 3.9)
-      return {};
-    }
-
-    /* ... */
-    ListIterator<T> end() {
-      //TODO: end-Method returning an Iterator to element after (!) 
-      //      the last element in the List (Aufgabe 3.9)
-      return {};
-    }
-
-    /* ... */ 
     // test and implement:
     //TODO: clear()-Method (Aufgabe 3.4)
 
+
+    /* Declaration of begin-Method returning a ListIterator refering to the first list_node */
+    ListIterator<T> begin();
+    /* Declaration of end-Method returning a ListIterator refering to the past-the-end-element which marks the end of the list*/
+    ListIterator<T> end();
 
     /* ... */
     //TODO: member function insert (Aufgabe 3.11)
@@ -101,68 +110,6 @@ class List {
 
     //TODO: member function reverse (Aufgabe 3.7 - Teil 1)
 
-
-    /* ... */
-    void push_front(T const& element) {
-      // TODO: push_front-method (Aufgabe 3.3)
-    }
-
-    /* ... */
-    void push_back(T const& element) {
-      // TODO: push_back-method (Aufgabe 3.3)
-    }
-
-    /* ... */
-    void pop_front() {
-      if(empty()) {
-        throw "List is empty";
-      }
-
-      // TODO: remainder of pop_front-method (Aufgabe 3.3)
-    }
-
-    /* ... */
-    void pop_back() {
-      if(empty()) {
-        throw "List is empty";
-      }
-
-      // TODO: remainder of pop_back-method (Aufgabe 3.3)
-    }
-
-    /* ... */
-    T& front() {
-      if(empty()) {
-        throw "List is empty";
-      }
-
-      // TODO: remainder of front-method (Aufgabe 3.3)
-    }
-
-    /* ... */
-    T& back() {
-      if(empty()) {
-        throw "List is empty";
-      }
-
-      // TODO: remainder of back-method (Aufgabe 3.3)
-    }
-
-    /* ... */
-    bool empty() const {
-
-      // TODO: empty-method (Aufgabe 3.2)
-      return false;
-    };
-
-
-    /* ... */
-    std::size_t size() const{
-      // TODO: size-method (Aufgabe 3.2)      
-      return 27;
-  };
-
-
   // list members
   private: 
     std::size_t size_;
@@ -171,10 +118,83 @@ class List {
 };
 
 // not fully implemented yet
-// TODO: Implement Default-Constructor by adding a sensible initializer list. (Aufgabe 3.2)
+// TODO: Implement Default-Constructor by adding a sensible initializer list. (Aufgabe 3.2 - Teil 1)
 /* ... */
 template <typename T>
 List<T>::List() {}
+
+// test and implement
+// TODO: size-Method. (Aufgabe 3.2 - Teil 2)
+/* ... */
+template <typename T>
+std::size_t List<T>::size() const {
+    //TODO: return value of member variable insteaf of 27
+    return 27;
+};
+
+// test and implement
+// TODO: empty-Method. (Aufgabe 3.2 - Teil 3)
+/* ... */
+template <typename T>
+bool List<T>::empty() const {
+    // check whether size member variable is zero -- this should be a one line implementation
+    return false;
+};
+
+
+
+/* Declaration of push_front-Method (Aufgabe 3.3 - Teil 1) */
+template <typename T>
+void List<T>::push_front(T const& element) {
+    // TODO: push_front-method (Aufgabe 3.3)
+}
+
+/* Declaration of pop_front-Method (Aufgabe 3.3 - Teil 2) */
+template <typename T>
+void List<T>::pop_front() {
+    if (empty()) {
+        throw "List is empty";
+    }
+
+    // TODO: remainder of pop_front-method (Aufgabe 3.3)
+}
+
+/* Declaration of push_front-Method (Aufgabe 3.3 - Teil 3) */
+template <typename T>
+void List<T>::push_back(T const& element) {
+    // TODO: push_back-method (Aufgabe 3.3)
+}
+
+/* Declaration of push_front-Method (Aufgabe 3.3 - Teil 4) */
+template <typename T>
+void List<T>::pop_back() {
+    if (empty()) {
+        throw "List is empty";
+    }
+
+    // TODO: remainder of pop_back-method (Aufgabe 3.3)
+}
+
+/* Declaration of front-Method (Aufgabe 3.3 - Teil 5) */
+template <typename T>
+T& List<T>::front() {
+    if (empty()) {
+        throw "List is empty";
+    }
+
+    // TODO: remainder of front-method (Aufgabe 3.3)
+}
+
+/* Declaration of back-Method (Aufgabe 3.3 - Teil 6)*/
+template <typename T>
+T& List<T>::back() {
+    if (empty()) {
+        throw "List is empty";
+    }
+
+    // TODO: remainder of back-method (Aufgabe 3.3)
+}
+
 
 
 // test and implement:
@@ -197,6 +217,62 @@ List<T>::List(std::initializer_list<T> ini_list) {
     //not implemented yet
 }
 
+// test and implement:
+// TODO: Destructor - List Konstruktor(3.4)
+/* ... */
+template <typename T>
+List<T>::~List() {
+  //TODO: Implement via clear-Method (Aufgabe 3.4)
+} //can not be tested with unit tests
+
+// test and implement:
+// TODO: unyfing assignment operator (see Vorlesung 6, pp. 11-13)
+/* ... */
+template <typename T>
+List<T>& List<T>::operator=(List<T> rhs) {
+
+}
+
+// test and implement:
+// TODO: helper-swap-method for bultin-types used by unifying assignment operator (see Vorlesung 6, pp. 11-13)
+/* ... */
+template <typename T>
+void List<T>::swap(List<T>& rhs) {
+
+}
+
+
+template <typename T>
+bool List<T>::operator==(List const& rhs) const {
+    //TODO: operator== (Aufgabe 3.8)
+}
+
+template <typename T>
+bool List<T>::operator!=(List const& rhs) const {
+    //TODO: operator!= (Aufgabe 3.8)
+    // make use of operator== you implemented
+}
+
+template <typename T>
+void List<T>::clear() {
+
+}
+
+/* ... */
+template <typename T>
+ListIterator<T> List<T>::begin() {
+    //TODO: begin-Method returning an Iterator to the 
+    //      first element in the List (Aufgabe 3.9)
+    return {};
+}
+
+/* ... */
+template <typename T>
+ListIterator<T> List<T>::end() {
+    //TODO: end-Method returning an Iterator to element after (!) 
+    //      the last element in the List (Aufgabe 3.9)
+    return {};
+}
 
 /* ... */
 //TODO: Freie Funktion reverse 
