@@ -23,6 +23,7 @@ public:
     ListIterator() = default;
     //user defined constructor implementation is provided below
     ListIterator(T* node);
+
     /* Declaration of operator*() */
     T& operator*()  const;
 
