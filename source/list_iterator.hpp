@@ -20,6 +20,10 @@ public:
     using difference_type = ptrdiff_t;
     using iterator_category = std::bidirectional_iterator_tag;
 
+    //default constructor with default-member initialization will not be implemented
+    ListIterator() = default;
+    //user defined constructor implementation is provided below
+    ListIterator(T* node);
     /* Declaration of operator*() */
     T& operator*()  const;
 
@@ -34,18 +38,24 @@ public:
     ListIterator<T> operator++(int);
 
     /* Declaration of comparison-operator in terms of equality */
-    bool operator==(ListIterator<T> const& x) const;
+    bool operator==(ListIterator<T> x) const;
 
     /* Declaration of comparison-operator in terms of inequality */
-    bool operator!=(ListIterator<T> const& x) const;
+    bool operator!=(ListIterator<T> x) const;
 
     /* Advances Iterator */
     ListIterator<T> next() const;
 
 private:
     //only member variable, pointer to the underlying node (see list_node.hpp)
-    ListNode <T>* node = nullptr;
+    ListNode <T>* node_ = nullptr;
 };
+
+
+//user-defined constructor is already completely implemented
+template<typename T>
+ListIterator<T>::ListIterator(T* node) : node_{ node } 
+{}
 
 /* ======================================== *
  * BEGIN COMMENTING AND IMPLEMENTATION HERE *
@@ -57,7 +67,7 @@ private:
 // not implemented yet
 template <typename T>
 T& ListIterator<T>::operator*() const {
-    if (nullptr == node) {
+    if (nullptr == node_) {
         throw "Iterator does not point to valid node";
     }
 
@@ -73,7 +83,7 @@ T& ListIterator<T>::operator*() const {
 // not implemented yet
 template <typename T>
 T* ListIterator<T>::operator->() const {
-    if (nullptr == node) {
+    if (nullptr == node_) {
         throw "Iterator does not point to valid node";
     }
 
@@ -88,7 +98,7 @@ T* ListIterator<T>::operator->() const {
 // not implemented yet
 template <typename T>
 ListIterator<T>& ListIterator<T>::operator++() {
-    if (nullptr == node) {
+    if (nullptr == node_) {
         throw "Iterator does not point to valid node";
     }
 
@@ -102,7 +112,7 @@ ListIterator<T>& ListIterator<T>::operator++() {
 // not implemented yet
 template <typename T>
 ListIterator<T> ListIterator<T>::operator++(int) {
-    if (nullptr == node) {
+    if (nullptr == node_) {
         throw "Iterator does not point to valid node";
     }
 
@@ -115,7 +125,7 @@ ListIterator<T> ListIterator<T>::operator++(int) {
 /* ... */
 // not implemented yet
 template <typename T>
-bool ListIterator<T>::operator==(ListIterator<T> const& x) const {
+bool ListIterator<T>::operator==(ListIterator<T> x) const {
     //TODO: Implement Equality-Operation for Iterator
     // Iterators should be the same if they refer to the same node
     return false;
@@ -127,7 +137,7 @@ bool ListIterator<T>::operator==(ListIterator<T> const& x) const {
 /* ... */
 // not implemented yet
 template <typename T>
-bool ListIterator<T>::operator!=(ListIterator<T> const& x) const {
+bool ListIterator<T>::operator!=(ListIterator<T> x) const {
     //TODO: Implement Inequality-Operation for Iterator  
     // Reuse operator==
     return false;
@@ -137,8 +147,8 @@ bool ListIterator<T>::operator!=(ListIterator<T> const& x) const {
 // is already implemented
 template <typename T>
 ListIterator<T> ListIterator<T>::next() const {
-    if (nullptr != node) {
-        return ListIterator{ node->next };
+    if (nullptr != node_) {
+        return ListIterator{ node_->next };
     }
     else {
         return ListIterator{ nullptr };
