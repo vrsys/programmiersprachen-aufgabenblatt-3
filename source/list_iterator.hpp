@@ -3,8 +3,7 @@
 
 #include "list_node.hpp"
 
-//TODO: Implementierung der Methoden des Iterators 
-//      (nach Vorlesung STL-1 am 22. Mai) (Aufgabe 3.10)
+//TODO: Implementierung der Methoden des Iterators (Aufgabe 3.10)
 template <typename T>
 struct ListIterator {
 public:
