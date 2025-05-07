@@ -7,8 +7,8 @@ TEST_CASE("iterators should be the same when they point to the same node", "[ite
     auto const begin_it = list.begin();
     auto const end_it = list.end();
 
-    REQUIRE(nullptr == begin_it.node);
-    REQUIRE(nullptr == end_it.node);
+    REQUIRE(nullptr == get_node_pointer<int>(begin_it));
+    REQUIRE(nullptr == get_node_pointer<int>(end_it));
 
     // the two begin iterators are actually all different objects, because their addresses are the same
     REQUIRE(&begin_it != &end_it); 
@@ -35,7 +35,7 @@ TEST_CASE("iterators should be the same when they point to the same node", "[ite
     REQUIRE(&end_it       != &begin_it_one); 
     REQUIRE(&end_it       != &begin_it_two); 
 
-    REQUIRE(nullptr == end_it.node);
+    REQUIRE(nullptr == get_node_pointer<int>(end_it));
 
     REQUIRE(*begin_it_one == list.front());
     REQUIRE(*begin_it_two == list.front());   
@@ -65,7 +65,7 @@ TEST_CASE("iterators should be the same when they point to the same node", "[ite
     REQUIRE(&end_it       != &begin_it_one); 
     REQUIRE(&end_it       != &begin_it_two); 
 
-    REQUIRE(nullptr == end_it.node);
+    REQUIRE(nullptr == get_node_pointer<int>(end_it));
 
     REQUIRE(*begin_it_one == list.front());
     REQUIRE(*begin_it_two == list.front());   

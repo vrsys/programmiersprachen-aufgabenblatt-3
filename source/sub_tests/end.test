@@ -3,7 +3,7 @@ TEST_CASE("end returns always an iterator containing a nullptr", "[getting_itera
 
   SECTION("an empty list returns an iterator which holds a nullptr") {
     REQUIRE(true == list.empty());
-    REQUIRE(nullptr == list.end().node);
+    REQUIRE(nullptr == get_node_pointer<int>(list.end()) );
   }
 
   list.push_front(9123);
@@ -15,7 +15,7 @@ TEST_CASE("end returns always an iterator containing a nullptr", "[getting_itera
 
     REQUIRE(9123 == list.front());
     REQUIRE(9123 == list.back());
-    REQUIRE(nullptr == end_iterator.node);
+    REQUIRE(nullptr == get_node_pointer<int>(end_iterator) );
     REQUIRE(1 == list.size());
   }
 
@@ -28,7 +28,7 @@ TEST_CASE("end returns always an iterator containing a nullptr", "[getting_itera
 
     REQUIRE(1000 == list.front());
     REQUIRE(9123 == list.back());
-    REQUIRE(nullptr == end_iterator.node);
+    REQUIRE(nullptr == get_node_pointer<int>(end_iterator) );
 
     REQUIRE(false == list.empty());
     REQUIRE(2 == list.size());

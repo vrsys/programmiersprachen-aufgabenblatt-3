@@ -7,6 +7,12 @@
 //      (nach Vorlesung STL-1 am 22. Mai) (Aufgabe 3.10)
 template <typename T>
 struct ListIterator {
+public:
+
+    //friend declarations for testing the members   
+    template <typename TEST_TYPE>
+    friend ListNode<TEST_TYPE>* get_node_pointer(ListIterator<TEST_TYPE> const& list_iterator_to_test);
+
     using Self = ListIterator<T>;
     using value_type = T;
     using pointer = T*;
@@ -36,6 +42,7 @@ struct ListIterator {
     /* Advances Iterator */
     ListIterator<T> next() const;
 
+private:
     //only member variable, pointer to the underlying node (see list_node.hpp)
     ListNode <T>* node = nullptr;
 };

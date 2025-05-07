@@ -14,6 +14,9 @@ ListNode<T>* get_first_pointer(List<T> const& list_to_test) {return list_to_test
 template <typename T>
 ListNode<T>* get_last_pointer(List<T> const& list_to_test) {return list_to_test.last_;}
 
+template <typename T>
+ListNode<T>* get_node_pointer(ListIterator<T> const& list_iterator_to_test) { return list_iterator_to_test.node; }
+
 
 //test case definitions for default constructor of list as well as empty and size for empty list
 #include "sub_tests/default_constructed_list.test"

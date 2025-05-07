@@ -3,7 +3,7 @@ TEST_CASE("begin returns an iterator to the first list node", "[getting_iterator
 
   SECTION("an empty list returns an iterator which holds a nullptr") {
     REQUIRE(true == list.empty());
-    REQUIRE(nullptr == list.begin().node);
+    REQUIRE(nullptr == get_node_pointer<int>(list.begin()) );
   }
 
   list.push_front(9123);
@@ -13,11 +13,11 @@ TEST_CASE("begin returns an iterator to the first list node", "[getting_iterator
 
     auto begin_iterator = list.begin();
 
-    REQUIRE(nullptr != begin_iterator.node);
+    REQUIRE(nullptr != get_node_pointer<int>(begin_iterator));
     REQUIRE(9123 == list.front());
     REQUIRE(9123 == list.back());
-    REQUIRE(9123 == begin_iterator.node->value);
-    REQUIRE(get_first_pointer(list) == begin_iterator.node);
+    REQUIRE(9123 == get_node_pointer<int>(begin_iterator)->value);
+    REQUIRE(get_first_pointer(list) == get_node_pointer<int>(begin_iterator));
     REQUIRE(1 == list.size());
   }
 
@@ -27,12 +27,12 @@ TEST_CASE("begin returns an iterator to the first list node", "[getting_iterator
     REQUIRE(false == list.empty());
     
     auto begin_iterator = list.begin();
-    REQUIRE(nullptr != begin_iterator.node);
-    REQUIRE(1000 == begin_iterator.node->value);
+    REQUIRE(nullptr != get_node_pointer<int>(begin_iterator) );
+    REQUIRE(1000 == get_node_pointer<int>(begin_iterator)->value);
     REQUIRE(1000 == list.front());
     REQUIRE(9123 == list.back());
-    REQUIRE(get_first_pointer(list) == begin_iterator.node);
-    REQUIRE(get_last_pointer(list)  != begin_iterator.node);
+    REQUIRE(get_first_pointer(list) == get_node_pointer<int>(begin_iterator) );
+    REQUIRE(get_last_pointer(list)  != get_node_pointer<int>(begin_iterator) );
 
     list.back() = 1;
     REQUIRE(false == list.empty());

@@ -10,7 +10,7 @@ TEST_CASE("iterators should not be the same when they do not point to the same n
     auto end_it       = list.end();
     REQUIRE(begin_it != end_it);
 
-    REQUIRE(nullptr == end_it.node);
+    REQUIRE(nullptr == get_node_pointer<int>(end_it));
 
     REQUIRE(*begin_it == list.front());
     REQUIRE(1 == list.size());
@@ -26,7 +26,7 @@ TEST_CASE("iterators should not be the same when they do not point to the same n
     auto end_it       = list.end();
     REQUIRE(begin_it != end_it);
 
-    REQUIRE(nullptr == end_it.node);
+    REQUIRE(nullptr == get_node_pointer<int>(end_it));
 
     REQUIRE(*begin_it == list.front());
     REQUIRE(2 == list.size());
