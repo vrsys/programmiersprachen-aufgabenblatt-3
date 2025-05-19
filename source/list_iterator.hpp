@@ -22,7 +22,10 @@ public:
     //default constructor with default-member initialization will not be implemented
     ListIterator() = default;
     //user defined constructor implementation is provided below
-    ListIterator(T* node);
+    ListIterator(ListNode<T>* node);
+
+    //getter for list - node
+    ListNode<T>* node() const;
 
     /* Declaration of operator*() */
     T& operator*()  const;
@@ -51,10 +54,13 @@ private:
     ListNode <T>* node_ = nullptr;
 };
 
+//getter for list-node
+template <typename T>
+ListNode<T>* ListIterator<T>::node() const { return node_;}
 
 //user-defined constructor is already completely implemented
 template<typename T>
-ListIterator<T>::ListIterator(T* node) : node_{ node } 
+ListIterator<T>::ListIterator(ListNode<T>* node) : node_{ node } 
 {}
 
 /* ======================================== *
