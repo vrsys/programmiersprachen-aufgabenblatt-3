@@ -1,5 +1,5 @@
-#define CATCH_CONFIG_RUNNER
-#include <catch.hpp>
+#define DOCTEST_CONFIG_IMPLEMENT
+#include <doctest.h>
 
 #include "list.hpp"
 
@@ -51,7 +51,9 @@ ListNode<T>* get_node_pointer(ListIterator<T> const& list_iterator_to_test) { re
 
 int main(int argc, char *argv[])
 {
-  return Catch::Session().run(argc, argv);
+  doctest::Context ctx;
+  ctx.applyCommandLine(argc, argv);
+  return ctx.run();
 }
 
 

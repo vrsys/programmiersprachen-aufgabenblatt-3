@@ -1,4 +1,4 @@
-TEST_CASE("add elements with push_front", "[list_insertion]") {
+TEST_CASE("add elements with push_front") {
   List<int> list{};
 
   // actual tests
@@ -9,22 +9,22 @@ TEST_CASE("add elements with push_front", "[list_insertion]") {
     auto first_pointer = get_first_pointer(list);
     auto last_pointer  = get_last_pointer(list); 
    
-    SECTION("first_ and last_ should not be nullptrs anymore") {
+    SUBCASE("first_ and last_ should not be nullptrs anymore") {
       REQUIRE(nullptr != first_pointer);
       REQUIRE(nullptr != last_pointer);
     }
 
-    SECTION("the links between nodes are set correctly") {
+    SUBCASE("the links between nodes are set correctly") {
       REQUIRE(nullptr == first_pointer->prev);
       REQUIRE(nullptr == first_pointer->next);
       REQUIRE(first_pointer == last_pointer);
     }
     
-    SECTION("the only element in the list should be 9") {
+    SUBCASE("the only element in the list should be 9") {
       REQUIRE(9 == first_pointer->value);
     }
 
-    SECTION("the list has size 1 and is not empty") {
+    SUBCASE("the list has size 1 and is not empty") {
       REQUIRE(1 == list.size() );
       REQUIRE(false == list.empty());
     }
@@ -36,25 +36,25 @@ TEST_CASE("add elements with push_front", "[list_insertion]") {
     auto first_pointer = get_first_pointer(list);
     auto last_pointer  = get_last_pointer(list); 
    
-    SECTION("first_ and last_ should not be nullptrs anymore") {
+    SUBCASE("first_ and last_ should not be nullptrs anymore") {
       REQUIRE(nullptr != first_pointer);
       REQUIRE(nullptr != last_pointer);
     }
 
     // links prepared correctly?
-    SECTION("the links between nodes are set correctly") {
+    SUBCASE("the links between nodes are set correctly") {
       REQUIRE(nullptr == first_pointer->prev);
       REQUIRE(nullptr == last_pointer->next);
       REQUIRE(first_pointer->next == last_pointer);
       REQUIRE(first_pointer       == last_pointer->prev);
     }
     
-    SECTION("front to back list content should be: 1 9") {
+    SUBCASE("front to back list content should be: 1 9") {
       REQUIRE(1 == first_pointer->value);
       REQUIRE(9 == last_pointer->value);
     }
 
-    SECTION("the list has size 2 and is not empty") {
+    SUBCASE("the list has size 2 and is not empty") {
       REQUIRE(2 == get_size(list));
       REQUIRE(false == list.empty());
     }
@@ -68,12 +68,12 @@ TEST_CASE("add elements with push_front", "[list_insertion]") {
     auto forward_middle_pointer  = first_pointer->next;
     auto backward_middle_pointer = last_pointer->prev;
 
-    SECTION("first_ and last_ should not be nullptrs anymore") {
+    SUBCASE("first_ and last_ should not be nullptrs anymore") {
       REQUIRE(nullptr != first_pointer);
       REQUIRE(nullptr != last_pointer);
     }
 
-    SECTION("the links between nodes are set correctly") {
+    SUBCASE("the links between nodes are set correctly") {
       REQUIRE(nullptr == first_pointer->prev);
       REQUIRE(nullptr == last_pointer->next);
       REQUIRE(forward_middle_pointer       == backward_middle_pointer);
@@ -81,13 +81,13 @@ TEST_CASE("add elements with push_front", "[list_insertion]") {
       REQUIRE(first_pointer                == backward_middle_pointer->prev);
     }
 
-    SECTION("front to back list content should be: -7 1 9") {
+    SUBCASE("front to back list content should be: -7 1 9") {
       REQUIRE(-7 == first_pointer->value);
       REQUIRE( 1 == forward_middle_pointer->value);
       REQUIRE( 9 == last_pointer->value);
     }
     
-    SECTION("the list has size 3 and is not empty") {
+    SUBCASE("the list has size 3 and is not empty") {
       REQUIRE( 3     == get_size(list));
       REQUIRE( false == list.empty());
     }

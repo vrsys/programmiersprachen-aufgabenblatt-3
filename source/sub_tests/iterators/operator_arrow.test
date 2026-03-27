@@ -5,13 +5,13 @@ struct Point2D{
   float y = 0.0f;
 };
 
-TEST_CASE("dereferencing an iterator using the arrow iterator should return the pointer of the value type", "[iterator usage]") {
+TEST_CASE("dereferencing an iterator using the arrow iterator should return the pointer of the value type") {
 
 
 
   List<Point2D> list{};
 
-  SECTION("an empty list can only have an iterator pointing to a nullptr, so dereferencing throws") {
+  SUBCASE("an empty list can only have an iterator pointing to a nullptr, so dereferencing throws") {
     REQUIRE(true == list.empty());
 
     auto begin_it = list.begin();
@@ -21,15 +21,15 @@ TEST_CASE("dereferencing an iterator using the arrow iterator should return the 
 
   list.push_front({10.0f, 100.0f});
 
-  SECTION("pushed element should be readable and writeable via dereferencing the iterator") {
+  SUBCASE("pushed element should be readable and writeable via dereferencing the iterator") {
     REQUIRE(10.0f  == list.front().x);
     REQUIRE(100.0f == list.front().y);
     REQUIRE(1 == list.size());
     REQUIRE(false == list.empty());
 
     auto begin_it = list.begin();
-    REQUIRE(begin_it->x == Approx(list.front().x) );
-    REQUIRE(begin_it->y == Approx(list.front().y) );
+    REQUIRE(begin_it->x == doctest::Approx(list.front().x) );
+    REQUIRE(begin_it->y == doctest::Approx(list.front().y) );
     REQUIRE(1 == list.size());
     REQUIRE(false == list.empty());
 
@@ -37,15 +37,15 @@ TEST_CASE("dereferencing an iterator using the arrow iterator should return the 
     begin_it->y = -27.2f;
 
     begin_it = list.begin();
-    REQUIRE(begin_it->x == Approx(list.front().x) );
-    REQUIRE(begin_it->y == Approx(list.front().y) );  
+    REQUIRE(begin_it->x == doctest::Approx(list.front().x) );
+    REQUIRE(begin_it->y == doctest::Approx(list.front().y) );  
     REQUIRE(1 == list.size());
     REQUIRE(false == list.empty());
   }
 
   list.push_front({std::numeric_limits<float>::max(), 
                    std::numeric_limits<float>::min()});
-  SECTION("pushed element should be readable and writeable and should not change size of list") {
+  SUBCASE("pushed element should be readable and writeable and should not change size of list") {
 
     float const float_max = std::numeric_limits<float>::max();
     float const float_min = std::numeric_limits<float>::min();

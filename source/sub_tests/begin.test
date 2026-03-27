@@ -1,13 +1,13 @@
-TEST_CASE("begin returns an iterator to the first list node", "[getting_iterators]") {
+TEST_CASE("begin returns an iterator to the first list node") {
   List<int> list{};
 
-  SECTION("an empty list returns an iterator which holds a nullptr") {
+  SUBCASE("an empty list returns an iterator which holds a nullptr") {
     REQUIRE(true == list.empty());
     REQUIRE(nullptr == get_node_pointer<int>(list.begin()) );
   }
 
   list.push_front(9123);
-  SECTION("calling begin of a non empty list should give us an iterator to the first element in the list") {
+  SUBCASE("calling begin of a non empty list should give us an iterator to the first element in the list") {
     REQUIRE(false == list.empty());
     REQUIRE(1 == list.size());
 
@@ -22,7 +22,7 @@ TEST_CASE("begin returns an iterator to the first list node", "[getting_iterator
   }
 
   list.push_front(1000);
-  SECTION(" pushed element should be readable and writeable and should not change size of list (also for 2 elements)") {
+  SUBCASE(" pushed element should be readable and writeable and should not change size of list (also for 2 elements)") {
     REQUIRE(2 == list.size());
     REQUIRE(false == list.empty());
     

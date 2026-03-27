@@ -11,13 +11,11 @@ if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang") OR ("${CMAKE_CXX_COMPILER_ID}" 
   set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
 
 endif()
-find_package(OpenGL REQUIRED)
 
 # Add externals
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external)
-add_definitions(-DGLEW_STATIC)
 
-set(CATCH_DIRECTORY catch2)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/${CATCH_DIRECTORY})
+set(DOCTEST_DIRECTORY doctest)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/${DOCTEST_DIRECTORY})
 
 add_subdirectory(source)
